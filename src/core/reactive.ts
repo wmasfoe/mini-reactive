@@ -1,9 +1,12 @@
 import type { ObjReactiveType } from "./types";
 import { Dep } from "./index";
 
-export default function reactive(OriginData: ObjReactiveType) {
+export default function reactive<T extends ObjReactiveType>(OriginData: T) {
   const dep = new Dep();
-  return new Proxy<ObjReactiveType>(OriginData, {
+
+  // 用户传入 data 的类型
+  type DataType = typeof OriginData;
+  return new Proxy<DataType>(OriginData, {
     get(target, prop) {
       // 收集依赖
       dep.depend();
