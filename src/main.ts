@@ -1,13 +1,15 @@
 import { reactive, Watcher } from "./core";
 
 const data = reactive({
-  msg: 'Hello World',
-})
+  msg: "Hello World",
+});
 
 new Watcher(() => {
-  (document.getElementById('app') as HTMLElement).innerHTML = `msg is ${data.msg}`
-})
+  (
+    document.getElementById("app") as HTMLElement
+  ).innerHTML = `msg is ${data.msg}`;
+});
 
 setTimeout(() => {
-  data.msg = 'asdasd'
+  data.msg = "asdasd";
 }, 2000);

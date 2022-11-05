@@ -11,7 +11,7 @@ export default class Dep implements IDep {
     if (Dep.target) Dep.targetStack.push(Dep.target);
     Dep.target = _target;
   }
-  
+
   // 取回上一个 watcher 作为 Dep.target，并且栈里要弹出上一个 watcher
   static popTarget() {
     Dep.target = Dep.targetStack.pop() || null;
